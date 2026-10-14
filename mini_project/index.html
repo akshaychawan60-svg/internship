@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory and Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 16px;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        h1 {
+            color: #174a7e;
+        }
+
+        form, section {
+            background: white;
+            border: 1px solid #d5dce5;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        label {
+            display: inline-block;
+            margin: 8px 12px 8px 0;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #174a7e;
+            color: white;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .summary p {
+            background: #edf4fc;
+            padding: 14px;
+            border-radius: 8px;
+        }
+
+        #message {
+            color: #a32121;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Product Inventory and Analytics Dashboard</h1>
+    <p>Add products and see their category, total value, and affordable items.</p>
+
+    <form id="product-form">
+        <h2>Add a product</h2>
+
+        <label>
+            Product name<br>
+            <input id="product-name" type="text" maxlength="60" required placeholder="For example, Monitor">
+        </label>
+
+        <label>
+            Product price ($)<br>
+            <input id="product-price" type="number" min="0.01" step="0.01" required placeholder="For example, 150">
+        </label>
+
+        <button type="submit">Add Product</button>
+        <p id="message" role="status"></p>
+    </form>
+
+    <section>
+        <h2>Inventory List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-list"></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Financial Analytics</h2>
+        <div class="summary">
+            <p>Total inventory value: <strong id="total-value">$0</strong></p>
+            <p>Number of products: <strong id="product-count">0</strong></p>
+            <p>Products under $200: <strong id="affordable-count">0</strong></p>
+        </div>
+
+        <h3>Affordable products</h3>
+        <p id="affordable-products">No products yet.</p>
+
+        <h3>Formatted report</h3>
+        <ul id="formatted-report"></ul>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
